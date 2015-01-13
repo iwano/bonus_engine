@@ -3,9 +3,9 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../test_app/config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'factory_girl_rails'
 require "database_cleaner"
+require 'shoulda/matchers'
 
 module BonusEngine
   module RSpec

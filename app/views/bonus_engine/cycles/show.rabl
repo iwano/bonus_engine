@@ -1,0 +1,3 @@
+attributes :name
+
+object @cycle

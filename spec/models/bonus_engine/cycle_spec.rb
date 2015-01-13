@@ -1,7 +1,7 @@
-require 'spec_helper'
+require "rails_helper"
 
 module BonusEngine
-  RSpec.describe Cycle, :type => :model do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe Cycle do
+    it { should validate_presence_of :name }
   end
 end

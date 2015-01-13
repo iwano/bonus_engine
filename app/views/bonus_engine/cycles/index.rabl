@@ -1,1 +1,2 @@
-collection :@posts, root: :articles
+collection @cycles
+extends 'bonus_engine/cycles/show'
