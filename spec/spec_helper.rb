@@ -12,34 +12,12 @@
 #
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
-
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../test_app/config/environment.rb", __FILE__)
-require 'rspec/rails'
-require 'rspec/autorun'
-require 'factory_girl_rails'
-require "database_cleaner"
-
-module BonusEngine
-  module RSpec
-    module ControllerRoutes
-      extend ActiveSupport::Concern
-      included do
-        routes { ::BonusEngine::Engine.routes }
-      end
-    end
-  end
-end
-
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
-  config.include FactoryGirl::Syntax::Methods
-  config.include BonusEngine::RSpec::ControllerRoutes, type: :controller
-  config.infer_spec_type_from_file_location!
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
@@ -58,18 +36,6 @@ RSpec.configure do |config|
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
-  end
-
-  config.use_transactional_fixtures = false
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-  config.after(:each) do
-    DatabaseCleaner.clean
   end
 
 # The settings below are suggested to provide a good initial experience
