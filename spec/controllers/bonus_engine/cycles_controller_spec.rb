@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 module BonusEngine
   describe CyclesController do
     render_views
@@ -11,7 +10,6 @@ module BonusEngine
       before do
         get :index, {format: :json}
       end
-
 
       it "returns a collection of cycles" do
         expect(response.status).to be 200
@@ -76,12 +74,12 @@ module BonusEngine
         let(:cycle) { create :cycle }
 
         before do
-          put :update, id: cycle.id, cycle: { name: 'new name' }
+          put :update, id: cycle.id, cycle: { name: 'updated name' }
         end
 
         it 'updates the cycle' do
           expect(response.status).to be 200
-          expect("new name").to eq JSON.parse(response.body)["name"]
+          expect("updated name").to eq JSON.parse(response.body)["name"]
         end
       end
 
@@ -92,9 +90,21 @@ module BonusEngine
           put :update, id: cycle.id, cycle: { name: '' }
         end
 
-        it 'updates the cycle' do
+        it 'does not update the cycle' do
           expect(response.status).to be 422
         end
+      end
+    end
+
+    describe '#destroy' do
+      let(:cycle) { create(:cycle) }
+
+      before do
+        delete :destroy, id: cycle.id
+      end
+
+      it 'destroys the specified cycle' do
+        expect(response.status).to be 200
       end
     end
   end

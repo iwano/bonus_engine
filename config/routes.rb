@@ -1,3 +1,5 @@
 BonusEngine::Engine.routes.draw do
-  resources :cycles
+  resources :cycles do
+    resources :events
+  end
 end
