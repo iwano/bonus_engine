@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 module BonusEngine
-  RSpec.describe CycleUser, :type => :model do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe CycleUser do
+    it { should belong_to(:cycle) }
+    it { should belong_to(:user) }
   end
 end
