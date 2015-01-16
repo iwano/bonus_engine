@@ -1,3 +1,5 @@
+require "rabl"
+
 module BonusEngine
   class Engine < ::Rails::Engine
     isolate_namespace BonusEngine
