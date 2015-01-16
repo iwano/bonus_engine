@@ -100,4 +100,19 @@ describe BonusEngine::Api::Admin::EventsController do
       end
     end
   end
+
+  describe '#show' do
+    let!(:event) { create(:event, name: 'test') }
+    let!(:cycle) {create :cycle}
+
+    before do
+      cycle.events << event
+      get :show, id: event.id, cycle_id: cycle.id
+    end
+
+    it "returns the event" do
+      expect(response.status).to be 200
+      expect(event.name).to eq JSON.parse(response.body)["name"]
+    end
+  end
 end

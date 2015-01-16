@@ -27,6 +27,10 @@ module BonusEngine
           end
         end
 
+        def show
+          @event = @cycle.events.find(params[:id])
+        end
+
         private
 
         def find_cycle
