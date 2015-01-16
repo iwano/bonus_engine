@@ -1,4 +1,5 @@
 require "bonus_engine/engine"
+require "services/user_service"
 
 module BonusEngine
   class << self

@@ -3,7 +3,7 @@ module BonusEngine
     before_action :find_user, only: :show
 
     def index
-      @users = BonusEngine.user_class.all
+      @users = ::UserService.all
     end
 
     def show; end
@@ -11,7 +11,7 @@ module BonusEngine
     private
 
     def find_user
-      @user = BonusEngine.user_class.find(params[:id])
+      @user = ::UserService.find(params[:id])
     end
   end
 end
