@@ -10,7 +10,7 @@ module BonusEngine
       before do
         cycle.events << create(:event, name: 'cycle 1 event')
         cycle2.events << create(:event, name: 'cycle 2 event')
-        get :index, { cycle_id: cycle.id, format: :json }
+        get :index, cycle_id: cycle.id
       end
 
       it "returns only the events for that cycle" do

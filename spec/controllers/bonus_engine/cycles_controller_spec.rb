@@ -8,7 +8,7 @@ module BonusEngine
       let(:expected_response) { [{"name" => 'test'}] }
 
       before do
-        get :index, {format: :json}
+        get :index
       end
 
       it "returns a collection of cycles" do
@@ -21,7 +21,7 @@ module BonusEngine
       let!(:cycle) { create(:cycle, name: 'test') }
 
       before do
-        get :show, {id: cycle.id, format: :json}
+        get :show, id: cycle.id
       end
 
       it "returns the cycle" do
