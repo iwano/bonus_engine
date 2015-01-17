@@ -1,4 +1,5 @@
 BonusEngine::Engine.routes.draw do
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   namespace :api do
     namespace :admin do
       resources :cycles do
