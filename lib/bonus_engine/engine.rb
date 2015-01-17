@@ -1,4 +1,5 @@
 require "rabl"
+require "es5-shim-rails"
 require "rails-assets-angular"
 require "rails-assets-angular-aria"
 require "rails-assets-angular-animate"
