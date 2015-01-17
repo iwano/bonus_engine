@@ -1,6 +1,6 @@
 module BonusEngine
   module Api
-    class CyclesController < ApplicationController
+    class CyclesController < BaseController
       before_action :find_cycle, only: :show
 
       def index

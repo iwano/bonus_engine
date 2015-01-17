@@ -1,6 +1,6 @@
 module BonusEngine
   module Api
-    class EventsController < ApplicationController
+    class EventsController < BaseController
       before_action :find_cycle
 
       def index

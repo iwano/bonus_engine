@@ -1,7 +1,7 @@
 module BonusEngine
   module Api
     module Admin
-      class CyclesController < ApplicationController
+      class CyclesController < BaseController
         before_action :find_cycle, only: [:show, :update, :destroy]
 
         def create

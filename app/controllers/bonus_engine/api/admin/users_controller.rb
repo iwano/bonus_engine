@@ -1,7 +1,7 @@
 module BonusEngine
   module Api
     module Admin
-      class UsersController < ApplicationController
+      class UsersController < BaseController
         before_action :find_user, only: :show
 
         def index

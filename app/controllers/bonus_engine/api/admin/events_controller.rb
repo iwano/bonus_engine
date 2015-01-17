@@ -1,7 +1,7 @@
 module BonusEngine
   module Api
     module Admin
-      class EventsController < ApplicationController
+      class EventsController < BaseController
         before_action :find_cycle
 
         def create
