@@ -1,4 +1,13 @@
 require "rabl"
+require "rails-assets-angular"
+require "rails-assets-angular-aria"
+require "rails-assets-angular-animate"
+require "rails-assets-angular-material"
+require "rails-assets-angular-ui-router"
+require "rails-assets-hammer.js"
+require "rails-assets-ng-loading"
+require "rails-assets-restangular"
+require "rails-assets-react"
 
 module BonusEngine
   class Engine < ::Rails::Engine

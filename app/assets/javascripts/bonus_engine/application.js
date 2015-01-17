@@ -11,3 +11,13 @@
 // about supported directives.
 //
 //= require_tree .
+//= require es5-shim/es5-shim
+//= require angular
+//= require angular-aria
+//= require angular-animate
+//= require angular-material
+//= require angular-ui-router
+//= require hammer.js
+//= require ng-loading/dist/ngLoading
+//= require restangular
+//= require react/react-with-addons
