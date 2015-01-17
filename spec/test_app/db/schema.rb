@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116161826) do
+ActiveRecord::Schema.define(version: 20150116230704) do
 
   create_table "bonus_engine_cycles", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20150116161826) do
   end
 
   add_index "bonus_engine_events", ["cycle_id"], name: "index_bonus_engine_events_on_cycle_id"
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
