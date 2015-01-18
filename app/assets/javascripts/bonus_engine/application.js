@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
 //= require es5-shim/es5-shim
 //= require angular
 //= require angular-aria
@@ -18,6 +17,8 @@
 //= require angular-material
 //= require angular-ui-router
 //= require hammer.js
+//= require lodash
 //= require ngLoading
 //= require restangular
 //= require react/react-with-addons
+//= require_tree .

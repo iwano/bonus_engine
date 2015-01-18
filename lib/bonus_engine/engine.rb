@@ -7,6 +7,7 @@ require "rails-assets-angular-material"
 require "rails-assets-angular-ui-router"
 require "rails-assets-hammer.js"
 require "rails-assets-iwano--ng-loading"
+require "rails-assets-lodash"
 require "rails-assets-restangular"
 require "rails-assets-react"
 
