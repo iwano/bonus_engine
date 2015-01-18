@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails-assets-angular"
   s.add_dependency "rails-assets-angular-animate"
   s.add_dependency "rails-assets-angular-aria"
-  s.add_dependency "rails-assets-angular-material"
+  s.add_dependency "rails-assets-angular-material", "0.7.0.rc3"
   s.add_dependency "rails-assets-angular-ui-router"
   s.add_dependency "rails-assets-hammer.js"
   s.add_dependency "rails-assets-react"
