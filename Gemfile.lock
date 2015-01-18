@@ -11,7 +11,7 @@ PATH
       rails-assets-angular-material
       rails-assets-angular-ui-router
       rails-assets-hammer.js
-      rails-assets-ng-loading
+      rails-assets-iwano--ng-loading (= 0.0.7)
       rails-assets-react
       rails-assets-restangular (>= 1.3.4)
 
@@ -129,9 +129,9 @@ GEM
       rails-assets-angular (>= 1.0.8)
     rails-assets-hammer.js (2.0.4)
     rails-assets-hammerjs (2.0.4)
-    rails-assets-lodash (2.4.1)
-    rails-assets-ng-loading (0.0.5)
+    rails-assets-iwano--ng-loading (0.0.7)
       rails-assets-lodash (~> 2.4.1)
+    rails-assets-lodash (2.4.1)
     rails-assets-react (0.12.2)
     rails-assets-restangular (1.4.0)
       rails-assets-angular

@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails-assets-angular-ui-router"
   s.add_dependency "rails-assets-hammer.js"
   s.add_dependency "rails-assets-react"
-  s.add_dependency "rails-assets-ng-loading"
+  s.add_dependency "rails-assets-iwano--ng-loading", "0.0.7"
   s.add_dependency "rails-assets-restangular", ">= 1.3.4"
 
   s.add_development_dependency "database_cleaner"

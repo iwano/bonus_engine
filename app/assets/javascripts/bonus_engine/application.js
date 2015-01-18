@@ -18,6 +18,6 @@
 //= require angular-material
 //= require angular-ui-router
 //= require hammer.js
-//= require ng-loading/dist/ngLoading
+//= require ngLoading
 //= require restangular
 //= require react/react-with-addons
