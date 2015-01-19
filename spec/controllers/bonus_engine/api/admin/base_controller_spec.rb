@@ -22,7 +22,7 @@ describe BonusEngine::Api::Admin::DummyController do
     it "restricts access" do
       expect{
         get :index
-      }. to raise_error(BonusEngine::Api::Admin::DummyController::AccessDenied)
+      }. to raise_error(BonusEngine::AccessDenied)
     end
   end
 

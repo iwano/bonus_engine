@@ -43,9 +43,7 @@ module BonusEngine
         end
 
         def authorize_user
-          unless UserService.is_bonus_owner?(current_user)
-            raise BonusEngine::Api::Admin::BaseController::AccessDenied
-          end
+          AuthorizationService.authorize_owner! current_user
         end
       end
     end
