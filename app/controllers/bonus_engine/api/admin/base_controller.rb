@@ -9,7 +9,7 @@ module BonusEngine
         private
 
         def authorize_user
-          unless current_user.roles.map(&:name).include?('bonus_admin')
+          unless UserService.is_bonus_admin?(current_user)
             raise BonusEngine::Api::Admin::BaseController::AccessDenied
           end
         end

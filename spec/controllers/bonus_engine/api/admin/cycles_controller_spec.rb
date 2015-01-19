@@ -3,6 +3,12 @@ require 'rails_helper'
 describe BonusEngine::Api::Admin::CyclesController do
   render_views
 
+  let(:owner) { create :owner_user }
+
+  before do
+    set_current_user(owner)
+  end
+
   describe '#create' do
     context 'with valid data' do
       let(:params) do

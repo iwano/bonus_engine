@@ -3,6 +3,12 @@ require 'rails_helper'
 describe BonusEngine::Api::Admin::EventsController do
   render_views
 
+  let(:admin) { create(:admin_user) }
+
+  before do
+    set_current_user admin
+  end
+
   describe "#index" do
     let!(:cycle) { create :cycle }
     let!(:cycle2) { create :cycle }

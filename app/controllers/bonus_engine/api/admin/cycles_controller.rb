@@ -41,6 +41,12 @@ module BonusEngine
         def cycle_params
           params.require(:cycle).permit(:name)
         end
+
+        def authorize_user
+          unless UserService.is_bonus_owner?(current_user)
+            raise BonusEngine::Api::Admin::BaseController::AccessDenied
+          end
+        end
       end
     end
   end
