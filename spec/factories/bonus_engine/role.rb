@@ -7,4 +7,7 @@ FactoryGirl.define do
     name "bonus_admin"
   end
 
+  factory :owner_role, class: 'Role' do
+    name "bonus_owner"
+  end
 end
