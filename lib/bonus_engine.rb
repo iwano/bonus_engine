@@ -2,6 +2,7 @@ require "bonus_engine/engine"
 require "bonus_engine/exceptions"
 require "services/user_service"
 require "services/authorization_service"
+require 'rails/generators'
 
 
 module BonusEngine
