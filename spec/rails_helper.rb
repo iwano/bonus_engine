@@ -61,6 +61,11 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+  # Clear current_user object
+  config.after(:each) do
+    set_current_user(nil)
+  end
+
   config.use_transactional_fixtures = false
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

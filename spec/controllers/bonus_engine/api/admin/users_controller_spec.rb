@@ -3,9 +3,14 @@ require 'rails_helper'
 describe BonusEngine::Api::Admin::UsersController do
   render_views
 
+  let(:admin) { create :admin_user }
+
+  before do
+    set_current_user(admin)
+  end
+
   describe '#index' do
-    let!(:user)  { create :user }
-    let!(:user2) { create :user }
+    let!(:user1) { create :user }
 
     before do
       get :index

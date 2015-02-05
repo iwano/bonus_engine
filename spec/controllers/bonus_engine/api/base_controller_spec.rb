@@ -15,26 +15,9 @@ describe BonusEngine::Api::DummyController do
   context "when user is not logged in" do
 
     before do
-      set_current_user(nil)
-    end
-
-    it "restricts access" do
-      expect{
-        get :index
-      }. to raise_error(BonusEngine::Api::DummyController::AccessDenied)
-    end
-  end
-
-  context "when user is logged in" do
-    let(:user) { create :user }
-
-    before do
-      set_current_user(user)
-    end
-
-    it "restricts access" do
       get :index
-      expect(response.status).to be 200
     end
+
+    it { expect(response.body).to be_empty }
   end
 end
