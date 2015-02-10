@@ -37,7 +37,10 @@ describe BonusEngine::Api::Admin::EventsController do
             event: {
                 name: 'event',
                 opens_at: "2015-01-13 00:00:00 UTC",
-                closes_at: "2015-01-15 00:00:00 UTC"
+                closes_at: "2015-01-15 00:00:00 UTC",
+                maximum_points: 400,
+                budget: 2000,
+                minimum_people: 4
             }
         }
       end
@@ -61,7 +64,10 @@ describe BonusEngine::Api::Admin::EventsController do
             event: {
                 name: '',
                 opens_at: '',
-                closes_at: ''
+                closes_at: '',
+                maximum_points: 400,
+                budget: 2000,
+                minimum_people: 4
             }
         }
       end
