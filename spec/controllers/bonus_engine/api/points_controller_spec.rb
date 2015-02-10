@@ -27,7 +27,7 @@ describe BonusEngine::Api::PointsController do
       end
 
       it 'creates points for a user' do
-        expect(response.status).to be 200
+        expect(response.status).to be 201
         expect(BonusEngine::Point.count).to be > 0
       end
     end

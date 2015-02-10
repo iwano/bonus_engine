@@ -5,7 +5,7 @@ module BonusEngine
         point = BonusEngine::Point.new create_point_params
 
         if point.save
-          render nothing: true, status: 200
+          render nothing: true, status: :created
         else
           render json: point.errors, status: :unprocessable_entity
         end
