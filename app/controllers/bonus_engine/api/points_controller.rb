@@ -4,11 +4,14 @@ module BonusEngine
       before_filter :check_balance, only: [:create]
 
       def create
-        point = BonusEngine::Point.new create_point_params
-        if point.save
-          render nothing: true, status: :created
+        @point = BonusEngine::Point.new create_point_params
+        if @point.save
+          stats = @event.stats_for current_user
+          @balance = stats[:balance]
+          @pending = stats[:pending]
+          render :create, status: :created
         else
-          render json: point.errors, status: :unprocessable_entity
+          render json: @point.errors, status: :unprocessable_entity
         end
       end
 

@@ -8,5 +8,13 @@ module BonusEngine
     validates_numericality_of :maximum_points, greater_than: 0
 
     after_initialize
+
+    def stats_for(user)
+      user_points = user.points.where(event_id: self.id)
+      {
+        balance: self.budget - user_points.sum(:quantity),
+        pending: self.minimum_people - user_points.count
+      }
+    end
   end
 end
