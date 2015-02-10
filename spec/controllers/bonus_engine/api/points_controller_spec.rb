@@ -4,13 +4,14 @@ describe BonusEngine::Api::PointsController do
   render_views
   let!(:cycle) { create :cycle }
   let!(:event) { create(:event, name: 'test') }
-  let!(:giver) { create(:user, name: 'Givencio') }
+  let!(:givencio) { create(:user, name: 'Givencio') }
+  let!(:giver) { create :bonus_engine_cycle_user }
   let!(:receiver) { create(:user, name: 'Recibencio') }
   let(:create_params){
     {
       event_id: event.id,
       receiver_id: receiver.id,
-      quantity: 500,
+      quantity: 400,
       message: 'lorem ipsum dolo'
     }
   }
@@ -41,6 +42,31 @@ describe BonusEngine::Api::PointsController do
       it 'should not create poins for user' do
         expect(response.status).to be 422
         expect(BonusEngine::Point.count).to be 0
+      end
+    end
+
+    context 'user cannot spend more budget than assigned' do
+      before do
+        create :point, receiver_id: 3, event_id: event.id
+        create :point, receiver_id: 4, event_id: event.id
+        create :point, receiver_id: 5, event_id: event.id
+        create :point, receiver_id: 8, event_id: event.id
+
+        post :create, create_params
+      end
+      it 'wont create points beyond budget' do
+        expect(response.status).to be 422
+      end
+    end
+
+    context 'user should respect maximum money limit' do
+      before do
+        event.update_attribute :maximum_points, 100
+        post :create, create_params
+      end
+
+      it 'wont create points beyont maximum limit' do
+        expect(response.status).to be 422
       end
     end
   end
