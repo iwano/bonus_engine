@@ -2,6 +2,7 @@ module BonusEngine
   module Api
     class PointsController < BaseController
       before_filter :check_balance, only: [:create]
+      before_filter :check_balance_for_update, only: [:update]
 
       def create
         @point = BonusEngine::Point.new create_point_params
@@ -16,12 +17,15 @@ module BonusEngine
       end
 
       def update
-        point = BonusEngine::Point.find params[:id]
+        @point = BonusEngine::Point.find params[:id]
 
-        if point.update(create_point_params)
-          render nothing: true, status: :ok
+        if @point.update(create_point_params)
+          stats = @event.stats_for current_user
+          @balance = stats[:balance]
+          @pending = stats[:pending]
+          render :update, status: :ok
         else
-          render json: point.errors, status: :unprocessable_entity
+          render json: @point.errors, status: :unprocessable_entity
         end
 
       end
@@ -32,6 +36,13 @@ module BonusEngine
         create_params = params.permit(:receiver_id, :event_id, :quantity, :message)
         create_params[:giver_id] = current_user.id
         create_params
+      end
+
+      def check_balance_for_update
+        point = BonusEngine::Point.find(params[:id])
+        unless current_user.can_update? current_event, point, params[:quantity].to_i
+          render json: {errors:{balance: 'You might be breaking the balance of the universe'}}, status: :unprocessable_entity
+        end
       end
 
       def check_balance

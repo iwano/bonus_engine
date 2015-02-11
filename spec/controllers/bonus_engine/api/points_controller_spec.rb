@@ -29,6 +29,7 @@ describe BonusEngine::Api::PointsController do
 
       it 'creates points for a user' do
         expect(response.status).to be 201
+        expect(JSON.parse(response.body)['info']).to include('balance')
         expect(BonusEngine::Point.count).to be > 0
       end
     end
@@ -81,6 +82,7 @@ describe BonusEngine::Api::PointsController do
 
       it 'updates attributes' do
         expect(existing_point.message).to be_eql 'kidding'
+        expect(JSON.parse(response.body)['info']).to include('balance')
         expect(response.status).to be 200
       end
     end
@@ -93,6 +95,34 @@ describe BonusEngine::Api::PointsController do
       end
 
       it 'updates attributes' do
+        expect(response.status).to be 422
+      end
+    end
+
+    context 'user can update previously assigned points' do
+      before do
+        create :point, receiver_id: 3, event_id: event.id
+        create :point, receiver_id: 4, event_id: event.id
+        create :point, receiver_id: 5, event_id: event.id
+        create :point, receiver_id: 8, event_id: event.id
+
+        put :update, event_id: event.id, id: 1, quantity: 10
+      end
+      it 'wont create points beyond budget' do
+        expect(response.status).to be 200
+      end
+    end
+
+    context 'user cannot spend more money than budget' do
+      before do
+        create :point, receiver_id: 3, event_id: event.id
+        create :point, receiver_id: 4, event_id: event.id
+        create :point, receiver_id: 5, event_id: event.id
+        create :point, receiver_id: 8, event_id: event.id
+
+        put :update, event_id: event.id, id: 1, quantity: 1000
+      end
+      it 'wont create points beyond budget' do
         expect(response.status).to be 422
       end
     end

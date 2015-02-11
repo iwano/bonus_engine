@@ -10,5 +10,13 @@ module BonusEngine
       event.stats_for(self)[:balance] >= points &&
         event.maximum_points >= points
     end
+
+    def can_update?(event, point, quantity)
+      initial_balance = event.stats_for(self)[:balance]
+
+      (initial_balance == 0 && point.quantity >= quantity) ||
+        (initial_balance > quantity) ||
+        event.maximum_points > quantity
+    end
   end
 end
