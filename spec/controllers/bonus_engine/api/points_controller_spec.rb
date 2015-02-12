@@ -70,6 +70,17 @@ describe BonusEngine::Api::PointsController do
         expect(response.status).to be 422
       end
     end
+
+    context 'when message is mandatory' do
+      before do
+        event.update_attribute :msg_required, true
+        create_params[:message] = nil
+        post :create, create_params
+      end
+      it 'should not allow to create empty message points' do
+        expect(response.status).to be 422
+      end
+    end
   end
 
   describe '#update' do
@@ -106,7 +117,7 @@ describe BonusEngine::Api::PointsController do
         create :point, receiver_id: 5, event_id: event.id
         create :point, receiver_id: 8, event_id: event.id
 
-        put :update, event_id: event.id, id: 1, quantity: 10
+        put :update, event_id: event.id, id: 1, quantity: 10, message: 'test'
       end
       it 'wont create points beyond budget' do
         expect(response.status).to be 200

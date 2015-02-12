@@ -1,6 +1,7 @@
 module BonusEngine
   module Api
     class PointsController < BaseController
+      before_action :check_msg, only: [:create, :update]
       before_action :check_budget, only: [:create]
       before_action :check_update_budget, only: [:update]
 
@@ -27,6 +28,14 @@ module BonusEngine
       end
 
       private
+
+      def check_msg
+        unless current_event.msg_required && params[:message]
+          render json: {
+                          errors: { message: 'Dont be shy... please leave a bonito message' }
+                       }, status: :unprocessable_entity
+        end
+      end
 
       def check_budget
         unless budget_service.available_budget? params[:quantity].to_i
