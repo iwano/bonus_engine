@@ -38,7 +38,9 @@ module BonusEngine
         end
 
         def event_params
-          params.require(:event).permit(:name, :opens_at, :closes_at)
+          params.require(:event).permit(:name, :opens_at, :closes_at, :budget,
+                                        :maximum_points, :msg_required,
+                                        :minimum_people)
         end
       end
     end
