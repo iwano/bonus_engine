@@ -1,5 +1,5 @@
 module BonusEngine
-  class CycleUser < ActiveRecord::Base
+  class BonusEngineUser < ActiveRecord::Base
     self.table_name = "bonus_engine_cycles_users"
 
     belongs_to :cycle
