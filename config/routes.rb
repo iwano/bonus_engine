@@ -19,6 +19,7 @@ BonusEngine::Engine.routes.draw do
 
     resources :events do
       resources :points, only: [:create, :update]
+      resources :reports, only: [:index]
     end
   end
 
