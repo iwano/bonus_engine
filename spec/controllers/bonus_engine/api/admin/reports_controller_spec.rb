@@ -27,7 +27,6 @@ describe BonusEngine::Api::Admin::ReportsController do
     end
     it 'displays a list of received points for an event' do
       expect(response.status).to be 200
-      binding.pry
     end
   end
 end
