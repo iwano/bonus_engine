@@ -10,6 +10,10 @@ BonusEngine::Engine.routes.draw do
         resources :events
       end
 
+      resources :events do
+        resources :reports, only: :index
+      end
+
       resources :users, only: [:index, :show]
     end
 
@@ -19,8 +23,8 @@ BonusEngine::Engine.routes.draw do
 
     resources :events do
       resources :points, only: [:create, :update]
+      resources :reports, only: [:index]
     end
   end
-
 end
 
